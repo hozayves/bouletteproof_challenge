@@ -76,7 +76,7 @@ export const Wrapper = ({ children, visible }: { children: any, visible: boolean
     return (
         <>
             <div
-                className={` min-w-full  h-full bg-[#000000c0] absolute top-0 left-0
+                className={` min-w-full md:bg-transparent  h-full bg-[#000000c0] absolute top-0 left-0
                 transition-opacity duration-500 ease-in-out ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
                 {children}

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function HeaderBar({ visible, setVisible }: { visible: boolean, setVisible: any }) {
     return (
-        <div className="bg-white rounded-lg border w-full md:w-[89%] md:self-end h-[50px] flex justify-between items-center px-2">
+        <div className="bg-white rounded-lg border w-full md:w-[89%] lg:w-[92%] md:self-end h-[50px] flex justify-between items-center px-2">
             <div className="flex justify-between items-center">
                 {!visible && (
                     <button onClick={() => setVisible(true)}>
