@@ -1,36 +1,231 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bootteproof Challenge
+
+Bootteproof Challenge is a Next.js-based web application that fetches and visualizes website visit data and customer data from a CRM. This project demonstrates the ability to work with data, APIs, and modern frontend development tools while ensuring performance and user experience.
+
+## Project Overview
+
+Bootteproof Challenge integrates with a CRM API to:
+- Fetch and display website visit data
+- Retrieve and visualize customer information
+- Provide a user-friendly interface for data exploration
 
 ## Getting Started
 
-First, run the development server:
+These instructions will help you set up and run Bootteproof Challenge on your local machine for development and learning purposes.
 
-```bash
+### Prerequisites
+
+- Node.js (version 18.x or higher)
+- npm (version 9.x or higher)
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/hozayves/bouletteproof_challenge.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd bouletteproof_challenge
+   ```
+
+3. Install dependencies:
+   ```
+   npm install
+   ```
+
+4. Set up environment variables:
+   - Copy the `.env.example` file and rename it to `.env.local`
+   - Fill in the required environment variables in `.env.local`
+
+### Running the Development Server
+
+Start the development server:
+
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application should now be running on [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app`: Contains the main application pages and routing
+- `src/components`: Reusable React components
+- `src/lib`: Utility functions and providers
+- `src/context`: React context definitions
 
-## Learn More
+Key components and pages:
+- `src/app/customer/page.tsx`: Customer data visualization page
+- `src/components/Navbar/Navbar.tsx`: Navigation component
+- `src/components/headerBar.tsx`: Header bar component
+- `src/components/Table/Table.tsx`: Reusable table component for data display
+- `src/app/context/GlobalContext.tsx`: Global context for managing application state
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Website Visit Data Visualization
+   - Fetches and displays website visit statistics
+   - Provides interactive charts or graphs for data analysis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Customer Data Management
+   - Retrieves customer information from the CRM
+   - Displays customer data in a user-friendly format
+   - Allows filtering and sorting of customer data
 
-## Deploy on Vercel
+3. Performance Optimization
+   - Implements efficient data fetching and caching strategies
+   - Utilizes Next.js features for optimal performance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Responsive Design
+   - Ensures a seamless experience across various device sizes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+
+The following environment variables are required for the project:
+
+```
+NEXT_PUBLIC_API_URL=your_crm_api_url_here
+NEXT_PUBLIC_API_KEY=your_api_key_here
+```
+
+Ensure these are set in your `.env.local` file before running the application.
+
+## API Usage
+
+Bootteproof Challenge interacts with a CRM API to fetch website visit and customer data. The API endpoints and keys are configured using environment variables.
+
+Example API request:
+
+```typescript
+const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customers`, {
+  headers: {
+    'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+  }
+});
+```
+
+Remember to never commit your actual API keys to version control. The `.env.local` file should be in your `.gitignore`.
+
+## Contributing
+
+If you'd like to contribute to Bootteproof Challenge, please fork the repository and create a pull request with your changes. Ensure that your code adheres to the project's coding standards and passes all existing tests.
+
+## License
+
+Bootteproof Challenge is released under the MIT License. See the LICENSE file for more details.
+
+## Setting Up the Database
+
+This project uses Mockaroo to generate mock data for customer visits and customer information. Follow these steps to set up your database:
+
+1. Visit [Mockaroo](https://mockaroo.com/)
+
+2. Create two schemas:
+
+   a. Customer Visit Data Schema:
+   ```json
+   {
+     "visit_id": 1,
+     "customer_id": 606,
+     "visit_timestamp": "10/3/2024",
+     "visit_source": "email_marketing",
+     "device_type": "gaming console",
+     "browser_type": "Internet Explorer",
+     "session_duration": 42411,
+     "actions_taken": "updated profile",
+     "geo_location": "Lebanon"
+   }
+   ```
+
+   b. Customer Data Schema:
+   ```json
+   {
+     "id": 2,
+     "first_name": "Marion",
+     "last_name": "Coil",
+     "customer_email": "mcoil1@goo.ne.jp",
+     "signup_date": "10/18/2024",
+     "last_activity": "7/27/2024"
+   }
+   ```
+
+3. After creating these schemas, Mockaroo will provide you with an API key.
+
+4. Add this API key to your `.env.local` file:
+
+   ```
+   NEXT_PUBLIC_API_KEY=your_mockaroo_api_key_here
+   NEXT_PUBLIC_API_URL=https://api.mockaroo.com
+   ```
+
+5. You can now use these endpoints to fetch data:
+   - Customer Visit Data: `https://api.mockaroo.com/api/customer_visit_data?key=YOUR_API_KEY`
+   - Customer Data: `https://api.mockaroo.com/api/customer_data?key=YOUR_API_KEY`
+
+Remember to replace `YOUR_API_KEY` with the actual API key provided by Mockaroo.
+
+## API Usage Example
+
+Here's an example of how to fetch customer data using Axios with the Mockaroo API:
+
+```typescript
+import axios from 'axios';
+
+const fetchCustomerData = async () => {
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/customer_data`, {
+      params: {
+        "X-API-Key": process.env.NEXT_PUBLIC_API_KEY
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch customer data:', error);
+    throw error;
+  }
+};
+
+// Example usage:
+const getCustomerData = async () => {
+  try {
+    const customerData = await fetchCustomerData();
+    console.log('Customer data:', customerData);
+  } catch (error) {
+    console.error('Error fetching customer data:', error);
+  }
+};
+
+// Function to fetch customer visit data
+const fetchCustomerVisitData = async () => {
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/customer_visit_data`, {
+      params: {
+        key: process.env.NEXT_PUBLIC_API_KEY
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch customer visit data:', error);
+    throw error;
+  }
+};
+
+```
+
+These functions demonstrate how to use Axios to fetch both customer data and customer visit data from the Mockaroo API. Remember to install Axios in your project:
+
+```bash
+npm install axios
+```
+
+Also, ensure that your `.env.local` file contains the correct API URL and key:
+
+```
+NEXT_PUBLIC_API_URL=https://api.mockaroo.com
+NEXT_PUBLIC_API_KEY=your_mockaroo_api_key_here
+```
+
+You can use these functions in your components or pages to fetch and display the data as needed.
