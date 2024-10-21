@@ -14,7 +14,7 @@ export default function Statistic() {
                 <HeaderBar visible={visible} setVisible={setVisible} />
                 <div className="flex flex-col md:w-[89%] lg:w-[92%] md:self-end gap-4">
                     <p className="leading-none text-xl px-1 mt-4">Hey, Yves Muhoza</p>
-                    {/*  */}
+                    {/* overview with aggregated data for total visitors, bounce rate, and average session duration. */}
                     <StatisticsCard />
                 </div>
                 <div className="flex flex-col md:flex-row md:gap-3 justify-center items-start gap-2 md:w-[89%] lg:w-[92%] md:self-end p-2 rounded-md">
