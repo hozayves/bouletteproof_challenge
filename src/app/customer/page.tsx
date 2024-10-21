@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { ColumnDef } from "@tanstack/react-table";
 import { useGetCustomer } from '@/hooks/useGetCustomer';
-import Link from 'next/link';
 import { Table } from '@/components/Table/Table';
 
 type CustomerType = {
