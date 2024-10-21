@@ -1,12 +1,18 @@
-export default function Home() {
+'use client'
+import StatisticsCard from "@/components/statisticsCard";
+import ViewsByCountry from "@/components/viewsCountry";
+import WebsiteVisit from "@/components/websiteViews";
+
+export default function Statistic() {
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <p>Main page</p>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <p>Footer</p>
-      </footer>
-    </div>
+    <>
+      {/* <h1 className="text-xl px-1 mt-4">Hey, Yves Muhoza</h1> */}
+      <StatisticsCard />
+      <div className="flex flex-col md:flex-row gap-2 md:gap-3 justify-center items-start p-2 rounded-md">
+        <WebsiteVisit />
+        <ViewsByCountry />
+      </div>
+    </>
   );
 }
