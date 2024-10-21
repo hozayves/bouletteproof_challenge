@@ -1,32 +1,18 @@
 'use client'
-import { CustomerGrowth, WebsiteVisit } from "@/components/graphs";
-import HeaderBar from "@/components/headerBar";
-import Navbar, { Wrapper } from "@/components/navbar";
-import StatisticsCard from "@/components/overview";
-import React, { useState } from "react";
+import StatisticsCard from "@/components/statisticsCard";
+import ViewsByCountry from "@/components/viewsCountry";
+import WebsiteVisit from "@/components/websiteViews";
 
 export default function Statistic() {
-    const [visible, setVisible] = useState(false)
+
     return (
         <>
-            <div className="flex h-auto min-h-screen max-h-auto  p-2 flex-col bg-gray-100">
-                {/* Top Header */}
-                <HeaderBar visible={visible} setVisible={setVisible} />
-                <div className="flex flex-col md:w-[89%] lg:w-[92%] md:self-end gap-4">
-                    <p className="leading-none text-xl px-1 mt-4">Hey, Yves Muhoza</p>
-                    {/* overview with aggregated data for total visitors, bounce rate, and average session duration. */}
-                    <StatisticsCard />
-                </div>
-                <div className="flex flex-col md:flex-row md:gap-3 justify-center items-start gap-2 md:w-[89%] lg:w-[92%] md:self-end p-2 rounded-md">
-                    {/* Graph showing */}
-                    <WebsiteVisit />
-                    <CustomerGrowth />
-                </div>
+            <h1 className="text-xl px-1 mt-4">Hey, Yves Muhoza</h1>
+            <StatisticsCard />
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 justify-center items-start p-2 rounded-md">
+                <WebsiteVisit />
+                <ViewsByCountry />
             </div>
-            <Wrapper visible={visible} >
-                {/* Sidebar Navigation */}
-                <Navbar visible={visible} setVisible={setVisible} />
-            </Wrapper>
         </>
-    )
+    );
 }
