@@ -2,15 +2,13 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-// import NavbarItem from "./NavbarItem";
-// import CloseButton from "./CloseButton";
 import { NavMenu } from "@/constant/navbar";
 import NavbarItem from "./NavbarItem";
 import CloseButton from "./CloseButton";
 
 interface NavbarProps {
     visible: boolean;
-    setVisible: (visible: boolean) => void;
+    setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Navbar({ visible, setVisible }: NavbarProps) {
