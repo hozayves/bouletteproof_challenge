@@ -226,8 +226,9 @@ npm install axios
 Also, ensure that your `.env.local` file contains the correct API URL and key:
 
 ```
-NEXT_PUBLIC_API_URL=https://api.mockaroo.com
-NEXT_PUBLIC_API_KEY=your_mockaroo_api_key_here
+   NEXT_PUBLIC_API_KEY=your_mockaroo_api_key_here
+   NEXT_PUBLIC_CUSTOMER_ENDPOINT=https://api.mockaroo.com/api/name_of_customer_schema
+   NEXT_PUBLIC_VISIT_ENDPOINT=https://api.mockaroo.com/api/name_of_visit_schema
 ```
 
 You can use these functions in your components or pages to fetch and display the data as needed.
