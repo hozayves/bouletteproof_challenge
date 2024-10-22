@@ -12,7 +12,13 @@ export function useOverviewData(statKey: string) {
         return { error };
     }
 
-    const { statValue, percentageChange } = calculateStats(data, statKey);
+    const { statValue, percentageChange } = calculateStats(
+        data.map(item => ({
+            ...item,
+            actions_taken: item.actions_taken === 'true'
+        })),
+        statKey
+    );
 
     return { statValue, percentageChange, isLoading: false, error: null };
 }
