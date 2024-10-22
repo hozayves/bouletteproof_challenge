@@ -100,9 +100,9 @@ Bootteproof Challenge interacts with a CRM API to fetch website visit and custom
 Example API request:
 
 ```typescript
-const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customers`, {
+const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
   headers: {
-    'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
+    'X-API-Key': `${process.env.NEXT_PUBLIC_API_KEY}`
   }
 });
 ```
@@ -162,8 +162,8 @@ This project uses Mockaroo to generate mock data for customer visits and custome
    ```
 
 5. You can now use these endpoints to fetch data:
-   - Customer Visit Data: `https://api.mockaroo.com/api/customer_visit_data?key=YOUR_API_KEY`
-   - Customer Data: `https://api.mockaroo.com/api/customer_data?key=YOUR_API_KEY`
+   - Customer Visit Data: `https://api.mockaroo.com/api/customer_visit_data`
+   - Customer Data: `https://api.mockaroo.com/api/customer_data`
 
 Remember to replace `YOUR_API_KEY` with the actual API key provided by Mockaroo.
 
@@ -176,7 +176,7 @@ import axios from 'axios';
 
 const fetchCustomerData = async () => {
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/customer_data`, {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}`, {
       params: {
         "X-API-Key": process.env.NEXT_PUBLIC_API_KEY
       }
