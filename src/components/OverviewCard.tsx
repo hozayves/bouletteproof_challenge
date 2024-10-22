@@ -30,7 +30,7 @@ export default function OverviewCard({ title, statKey, showPercentage = true }: 
                 <p className="text-lg">{title}</p>
                 <div className="flex align-center gap-14 md:gap-5 mt-4">
                     <p className="font-medium text-3xl">
-                        {formatStatValue(statValue, statKey)}
+                        {formatStatValue(statValue ?? 0, statKey)}
                     </p>
                     {showPercentage && (
                         <PercentageChange value={percentageChange ?? 0} />
