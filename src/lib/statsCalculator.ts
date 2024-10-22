@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 interface Visit {
     visit_timestamp: string | number | Date;
     session_duration: number;
-    actions_taken: boolean;
+    actions_taken: string;
 }
 
 interface StatResult {
@@ -33,13 +33,25 @@ function filterDataByMonth(data: Visit[]): { currentMonthData: Visit[]; previous
 }
 
 function calculateStatForMonth(monthData: Visit[], statKey: string): number {
+    console.log(`Calculating stat for: ${statKey}`);
+    console.log(`Month data length: ${monthData.length}`);
+
     switch (statKey) {
         case "visitors":
             return monthData.length;
         case "session_duration":
             return monthData.reduce((acc, visit) => acc + visit.session_duration, 0) / monthData.length || 0;
         case "bounce_rate":
-            return (monthData.filter((visit) => !visit.actions_taken).length / monthData.length) * 100;
+            if (monthData.length === 0) {
+                console.log("No data for the month");
+                return 0;
+            }
+            console.log("Visits in this month:", monthData);
+            // monthData.forEach((visit, index) => {
+            //     console.log(`Visit ${index + 1}: actions_taken = "${visit.actions_taken}"`);
+            // });
+            const bounces = monthData.filter((visit) => visit.actions_taken === "").length;
+            return (bounces / monthData.length) * 100;
         default:
             return 0;
     }

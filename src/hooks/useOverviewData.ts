@@ -13,11 +13,7 @@ export function useOverviewData(statKey: string) {
     }
 
     const { statValue, percentageChange } = calculateStats(
-        data.map(item => ({
-            ...item,
-            actions_taken: item.actions_taken === 'true'
-        })),
-        statKey
+        data, statKey
     );
 
     return { statValue, percentageChange, isLoading: false, error: null };
