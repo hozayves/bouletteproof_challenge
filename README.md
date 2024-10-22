@@ -128,27 +128,27 @@ This project uses Mockaroo to generate mock data for customer visits and custome
    a. customer_visit_data Schema:
    ```json
    {
-     "visit_id": 1,
-     "customer_id": 606,
-     "visit_timestamp": "10/3/2024",
-     "visit_source": "email_marketing",
-     "device_type": "gaming console",
-     "browser_type": "Internet Explorer",
-     "session_duration": 42411,
-     "actions_taken": "updated profile",
-     "geo_location": "Lebanon"
+     "visit_id": Row Number,
+     "customer_id": Dataset column,
+     "visit_timestamp": Datetime,
+     "visit_source": Custom List,
+     "device_type": Custom List,
+     "browser_type": Custom List,
+     "session_duration": Number,
+     "actions_taken": Custom List,
+     "geo_location": Country
    }
    ```
 
    b. customer_data Schema:
    ```json
    {
-     "id": 2,
-     "first_name": "Marion",
-     "last_name": "Coil",
-     "customer_email": "mcoil1@goo.ne.jp",
-     "signup_date": "10/18/2024",
-     "last_activity": "7/27/2024"
+     "id": Row Number,
+     "first_name": String,
+     "last_name": String,
+     "customer_email": Email Address,
+     "signup_date": Datetime,
+     "last_activity": Datetime
    }
    ```
 
@@ -158,7 +158,8 @@ This project uses Mockaroo to generate mock data for customer visits and custome
 
    ```
    NEXT_PUBLIC_API_KEY=your_mockaroo_api_key_here
-   NEXT_PUBLIC_API_URL=https://api.mockaroo.com
+   NEXT_PUBLIC_CUSTOMER_ENDPOINT=https://api.mockaroo.com/api/name_of_customer_schema
+   NEXT_PUBLIC_VISIT_ENDPOINT=https://api.mockaroo.com/api/name_of_visit_schema
    ```
 
 5. You can now use these endpoints to fetch data:
