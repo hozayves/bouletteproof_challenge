@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ColumnDef } from "@tanstack/react-table";
 import { useGetCustomer } from '@/hooks/useGetCustomer';
 import { Table } from '@/components/Table/Table';
+import { Skeleton } from '@/components/';
 
 type CustomerType = {
     id: number,
@@ -74,11 +75,17 @@ export default function CustomerPage() {
         },
     ];
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return (
+        <div className="min-w-full p-4 rounded-lg bg-white">
+            <Skeleton count={1} height={40} width={260} className='mb-3' />
+
+            <Skeleton count={22} height={20} />
+        </div>
+    );
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <div className="container min-w-full p-4 rounded-lg bg-white">
+        <div className="min-w-full p-4 rounded-lg bg-white">
             <input
                 type="text"
                 placeholder="Search by name or email"

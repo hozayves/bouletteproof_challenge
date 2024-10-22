@@ -5,6 +5,6 @@ export interface NavMenuItem {
 }
 
 export const NavMenu: NavMenuItem[] = [
-    { name: 'Home', link: '/stast', image: '/assets/home.svg' },
+    { name: 'Home', link: '/', image: '/assets/home.svg' },
     { name: 'About', link: '/customer', image: '/assets/users.png' },
 ];
