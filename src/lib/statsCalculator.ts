@@ -1,6 +1,17 @@
 import dayjs from "dayjs";
 
-export function calculateStats(data, statKey) {
+interface Visit {
+    visit_timestamp: string | number | Date;
+    session_duration: number;
+    actions_taken: boolean;
+}
+
+interface StatResult {
+    statValue: number;
+    percentageChange: number;
+}
+
+export function calculateStats(data: Visit[], statKey: string): StatResult {
     const { currentMonthData, previousMonthData } = filterDataByMonth(data);
 
     const currentMonthStat = calculateStatForMonth(currentMonthData, statKey);
@@ -11,7 +22,7 @@ export function calculateStats(data, statKey) {
     return { statValue: currentMonthStat, percentageChange };
 }
 
-function filterDataByMonth(data) {
+function filterDataByMonth(data: Visit[]): { currentMonthData: Visit[]; previousMonthData: Visit[] } {
     const currentMonth = dayjs().month();
     const previousMonth = currentMonth === 0 ? 11 : currentMonth - 1;
 
@@ -21,7 +32,7 @@ function filterDataByMonth(data) {
     return { currentMonthData, previousMonthData };
 }
 
-function calculateStatForMonth(monthData, statKey) {
+function calculateStatForMonth(monthData: Visit[], statKey: string): number {
     switch (statKey) {
         case "visitors":
             return monthData.length;
@@ -34,7 +45,7 @@ function calculateStatForMonth(monthData, statKey) {
     }
 }
 
-function calculatePercentageChange(current, previous) {
+function calculatePercentageChange(current: number, previous: number): number {
     if (previous === 0) return 100;
     return ((current - previous) / previous) * 100;
 }
