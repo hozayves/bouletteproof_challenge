@@ -87,8 +87,9 @@ Key components and pages:
 The following environment variables are required for the project:
 
 ```
-NEXT_PUBLIC_API_URL=your_crm_api_url_here
-NEXT_PUBLIC_API_KEY=your_api_key_here
+NEXT_PUBLIC_API_KEY=your_mockaroo_api_key_here
+NEXT_PUBLIC_CUSTOMER_ENDPOINT=https://api.mockaroo.com/api/name_of_customer_schema
+NEXT_PUBLIC_VISIT_ENDPOINT=https://api.mockaroo.com/api/name_of_visit_schema
 ```
 
 Ensure these are set in your `.env.local` file before running the application.
