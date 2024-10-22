@@ -125,7 +125,7 @@ This project uses Mockaroo to generate mock data for customer visits and custome
 
 2. Create two schemas:
 
-   a. Customer Visit Data Schema:
+   a. customer_visit_data Schema:
    ```json
    {
      "visit_id": 1,
@@ -140,7 +140,7 @@ This project uses Mockaroo to generate mock data for customer visits and custome
    }
    ```
 
-   b. Customer Data Schema:
+   b. customer_data Schema:
    ```json
    {
      "id": 2,
